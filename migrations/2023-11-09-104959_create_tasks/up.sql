@@ -1,9 +1,10 @@
--- Your SQL goes here
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
 CREATE TABLE tasks (
-    id SERIAL PRIMARY KEY,
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     title VARCHAR NOT NULL,
     description TEXT,
-    completed BOOLEAN NOT NULL DEFAULT 'f'
+    completed BOOLEAN NOT NULL DEFAULT FALSE,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
-
-
